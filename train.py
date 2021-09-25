@@ -4,7 +4,7 @@ import pandas as pd
 from traceback import format_exc
 
 from raifhack_ds.model import BenchmarkModel
-from raifhack_ds.settings import MODEL_PARAMS, LOGGING_CONFIG, NUM_FEATURES, CATEGORICAL_OHE_FEATURES,CATEGORICAL_STE_FEATURES,TARGET
+from raifhack_ds.settings import MODEL_PARAMS1, MODEL_PARAMS2, LOGGING_CONFIG, NUM_FEATURES, CATEGORICAL_OHE_FEATURES,CATEGORICAL_STE_FEATURES,TARGET
 from raifhack_ds.utils import PriceTypeEnum
 from raifhack_ds.metrics import metrics_stat
 from raifhack_ds.features import prepare_categorical
@@ -48,7 +48,7 @@ if __name__ == "__main__":
         y_manual = train_df[train_df.price_type == PriceTypeEnum.MANUAL_PRICE][TARGET]
         logger.info(f'X_offer {X_offer.shape}  y_offer {y_offer.shape}\tX_manual {X_manual.shape} y_manual {y_manual.shape}')
         model = BenchmarkModel(numerical_features=NUM_FEATURES, ohe_categorical_features=CATEGORICAL_OHE_FEATURES,
-                                  ste_categorical_features=CATEGORICAL_STE_FEATURES, model_params=MODEL_PARAMS)
+                                  ste_categorical_features=CATEGORICAL_STE_FEATURES, model_params1=MODEL_PARAMS1, model_params2=MODEL_PARAMS2)
         logger.info('Fit model')
         model.fit(X_offer, y_offer, X_manual, y_manual)
         logger.info('Save model')
